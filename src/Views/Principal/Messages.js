@@ -16,14 +16,14 @@ import ExtraDimensions from 'react-native-extra-dimensions-android';
 import Button from 'apsl-react-native-button';
 import SnackBar from 'react-native-snackbar-dialog';
 
-import MainView from '../../Components/MainView.js';
-import MyText from '../../Components/MyText.js';
-import MyButton from '../../Components/MyButton.js';
-import LoginFb from '../../Components/LoginFb.js';
+import MainView from '../../components/MainView.js';
+import MyText from '../../components/MyText.js';
+import MyButton from '../../components/MyButton.js';
+import LoginFb from '../../components/LoginFb.js';
 
 import * as firebase from 'firebase';
 
-import ClassCard from '../../Components/ClassCard.js';
+import ClassCard from '../../components/ClassCard.js';
 
 export default class Messages extends Component {
 

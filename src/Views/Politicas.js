@@ -5,9 +5,9 @@ import ExtraDimensions from 'react-native-extra-dimensions-android';
 import Button from 'apsl-react-native-button';
 import { NavigationActions } from 'react-navigation'
 
-import MainView from '../Components/MainView.js';
-import BackHeader from '../Components/BackHeader.js';
-import MyText from '../Components/MyText.js'
+import MainView from '../components/MainView.js';
+import BackHeader from '../components/BackHeader.js';
+import MyText from '../components/MyText.js'
 
 const windowsize = Dimensions.get('window');
 
@@ -29,11 +29,11 @@ export default class Politicas extends Component{
                     <Text style={styles.txt} >Antes de iniciar</Text>
                     <View style={styles.info}>
                         <Text style={styles.txtInfo}>Póliticas de Privacidad</Text>
-                        <Text style={styles.txtInfo}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-                        Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis 
-                        dis parturi- ent montes, nascetur ridiculus mus. 
-                        Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. 
-                        Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, 
+                        <Text style={styles.txtInfo}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                        Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
+                        dis parturi- ent montes, nascetur ridiculus mus.
+                        Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+                        Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec,
                         vulputate eget, arcu. In enim justo,</Text>
                     </View>
                 </View>
@@ -62,8 +62,8 @@ const styles = StyleSheet.create({
         fontFamily: 'Champagne & Limousines',
         color: '#414242',
         backgroundColor: 'transparent',
-        paddingLeft: 50,  
-        paddingRight: 30,  
+        paddingLeft: 50,
+        paddingRight: 30,
         paddingTop: 15,
     }
 });

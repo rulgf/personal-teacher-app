@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Platform} from 'react-native';
 
-import ClassCard from '../../../Components/ClassCard.js';
+import ClassCard from '../../../components/ClassCard.js';
 
 
 export default class ParaTi extends Component{

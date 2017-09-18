@@ -7,8 +7,8 @@ import ExtraDimensions from 'react-native-extra-dimensions-android';
 import Button from 'apsl-react-native-button';
 import { NavigationActions } from 'react-navigation'
 
-import MainView from '../../Components/MainView.js';
-import BackHeader from '../../Components/BackHeader.js';
+import MainView from '../../components/MainView.js';
+import BackHeader from '../../components/BackHeader.js';
 
 const windowsize = Dimensions.get('window');
 
@@ -58,9 +58,9 @@ export default class OlvideContrasena extends Component{
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        ...Platform.select({ 
-            ios: { height: windowsize.height-30}, 
-            android: { height: ExtraDimensions.get('REAL_WINDOW_HEIGHT') - ExtraDimensions.get('SOFT_MENU_BAR_HEIGHT') - ExtraDimensions.get('STATUS_BAR_HEIGHT'), }, 
+        ...Platform.select({
+            ios: { height: windowsize.height-30},
+            android: { height: ExtraDimensions.get('REAL_WINDOW_HEIGHT') - ExtraDimensions.get('SOFT_MENU_BAR_HEIGHT') - ExtraDimensions.get('STATUS_BAR_HEIGHT'), },
         }),
     },
     generalTxt:{

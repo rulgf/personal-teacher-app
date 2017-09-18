@@ -21,10 +21,10 @@ import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Switch from 'react-native-switch-pro';
 import Autocomplete from 'react-native-autocomplete-input';
 
-import MainView from '../../../Components/MainView.js';
-import BackHeader from '../../../Components/BackHeader.js';
-import MyText from '../../../Components/MyText.js';
-import MenuPicker from '../../../Components/MenuPicker.js'
+import MainView from '../../../components/MainView.js';
+import BackHeader from '../../../components/BackHeader.js';
+import MyText from '../../../components/MyText.js';
+import MenuPicker from '../../../components/MenuPicker.js'
 
 const arrowRightIcon = (<Icon name="ios-arrow-round-forward" size={30} color="#414242" />);
 const windowsize = Dimensions.get('window');

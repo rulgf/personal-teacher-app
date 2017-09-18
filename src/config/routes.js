@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { StackNavigator, TabNavigator, NavigationActions } from 'react-navigation';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import {addNavigationHelpers, StackNavigator, TabNavigator, NavigationActions } from 'react-navigation';
 
 //Icons
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -65,40 +67,7 @@ const MainRoute = TabNavigator({
             }
     });
 
-const Recomendations = TabNavigator({
-        Parati: {
-            screen: Home,
-            navigationOptions: {
-                tabBarLabel: 'Para ti',
-            }
-        },
-        Novedades: {
-            screen: Favoritos,
-            navigationOptions: {
-                tabBarLabel: 'Novedades',
-            }
-        },/*
-         Promociones:{
-
-         }*/
-    },
-    {
-        swipeEnabled: true,
-        tabBarOptions: {
-            showIcon: false,
-            showLabel: true,
-            activeTintColor: '#fff',
-            inactiveTintColor: '#fff',
-            style: {
-                backgroundColor: '#005CB8'
-            },
-            indicatorStyle: {
-                backgroundColor: '#94D500',
-            }
-        }
-    });
-
-const RouteApp = StackNavigator({
+export const RouteApp = StackNavigator({
             Home: { screen: Login },
             Terminos: { screen: Terminos },
             Politicas: { screen: Politicas },
@@ -113,16 +82,29 @@ const RouteApp = StackNavigator({
     { headerMode: 'none' }
 );
 
-const navigateOnce = (getStateForAction) => (action, state) => {
+const AppWithNavigationState = ({ dispatch, nav }) => (
+  <RouteApp navigation={addNavigationHelpers({ dispatch, state: nav })} />
+);
+
+AppWithNavigationState.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  nav: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = state => ({
+  nav: state.nav,
+});
+
+//Navegación única
+/*const navigateOnce = (getStateForAction) => (action, state) => {
     const {type, routeName} = action;
     return (
         state &&
         type === NavigationActions.NAVIGATE &&
         routeName === state.routes[state.routes.length - 1].routeName
     ) ? null : getStateForAction(action, state);
-    // you might want to replace 'null' with 'state' if you're using redux (see comments below)
 };
 
-RouteApp.router.getStateForAction = navigateOnce(RouteApp.router.getStateForAction);
+RouteApp.router.getStateForAction = navigateOnce(RouteApp.router.getStateForAction);*/
 
-export default RouteApp;
+export default connect(mapStateToProps)(AppWithNavigationState);

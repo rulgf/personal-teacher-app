@@ -6,18 +6,32 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import ExtraDimensions from 'react-native-extra-dimensions-android';
 import Button from 'apsl-react-native-button';
 import SnackBar from 'react-native-snackbar-dialog';
+//Redux
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as Actions from '../../actions';
 
-import MainView from '../../Components/MainView.js';
-import MyText from '../../Components/MyText.js';
-import MyButton from '../../Components/MyButton.js';
-import LoginFb from '../../Components/LoginFb.js';
+import MainView from '../../components/MainView.js';
+import MyText from '../../components/MyText.js';
+import MyButton from '../../components/MyButton.js';
+import LoginFb from '../../components/LoginFb.js';
 
 import * as firebase from 'firebase';
 
 const fbIcon = (<FontAwesomeIcon name="facebook-official" size={30} color="#fff" />)
 const windowsize = Dimensions.get('window');
 
-export default class Login extends Component{
+function mapStateToProps(state){
+  return({
+    user: state.user
+  });
+}
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators(Actions, dispatch);
+}
+
+class Login extends Component{
 
     constructor(props){
         super(props);
@@ -126,6 +140,14 @@ export default class Login extends Component{
         this.setState({password: text});
     }
 
+    //Prueba REDUX
+    prueba(){
+      this.props.login({
+        userName: 'testuser',
+        password: 'abc123'
+      });
+    }
+
     render(){
         const { navigate } = this.props.navigation;
         return(
@@ -163,7 +185,7 @@ export default class Login extends Component{
                                 <Text style={styles.forgetTxt} onPress={() => navigate('OlvideContrasena')}>Olvide mi contraseña</Text>
                             </View>
                             <View style={styles.loginBtn}>
-                                <MyButton onPress={() => this.handleLogin.bind(this)}>Iniciar</MyButton>
+                                <MyButton onPress={() => this.prueba.bind(this)}>Iniciar</MyButton>
                             </View>
                         </View>
                         <View style={styles.registerContainer}>
@@ -288,3 +310,5 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent'
     },
 });
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

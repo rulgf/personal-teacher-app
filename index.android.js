@@ -6,11 +6,16 @@
 
 import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
-
+//Redux
+import { createStore } from 'redux';
+import { Provider, connect } from 'react-redux';
+import { addNavigationHelpers } from 'react-navigation';
 //Firebase
 import * as firebase from 'firebase';
-
-import RouteApp from './src/config/routes.js';
+//Navigation
+import { RouteApp } from './src/config/routes.js';
+import  AppReducer  from './src/reducers'
+//End imports--------------------------------------------
 
 
 const config = {
@@ -23,5 +28,33 @@ const config = {
 };
 
 const firebaseApp = firebase.initializeApp(config);
+const store = createStore(AppReducer);
 
-AppRegistry.registerComponent('athome', () => RouteApp);
+const App = ({dispatch, nav}) => (
+  <RouteApp
+    navigation={addNavigationHelpers({
+      dispatch,
+      state: nav,
+    })}
+  />
+)
+
+const mapStateToProps = state =>({
+  nav: state.nav,
+});
+
+const AppWithNavigation = connect(mapStateToProps)(App);
+
+class AppMain extends Component{
+  render() {
+    return (
+      <Provider store={store}>
+        <AppWithNavigation />
+      </Provider>
+    );
+  }
+}
+
+AppRegistry.registerComponent('athome', () => AppMain);
+
+export default App;

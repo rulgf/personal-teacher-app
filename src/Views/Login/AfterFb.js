@@ -20,10 +20,10 @@ import Button from 'apsl-react-native-button';
 import { NavigationActions } from 'react-navigation'
 import SnackBar from 'react-native-snackbar-dialog';
 
-import MainView from '../../Components/MainView.js';
-import BackHeader from '../../Components/BackHeader.js';
-import MyText from '../../Components/MyText.js';
-import MyButton from '../../Components/MyButton.js';
+import MainView from '../../components/MainView.js';
+import BackHeader from '../../components/BackHeader.js';
+import MyText from '../../components/MyText.js';
+import MyButton from '../../components/MyButton.js';
 import User from '../../Models/User.js';
 
 const arrowRightIcon = (<Icon name="ios-arrow-round-forward" size={30} color="#414242" />);
