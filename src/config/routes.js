@@ -96,7 +96,7 @@ const mapStateToProps = state => ({
 });
 
 //Navegación única
-/*const navigateOnce = (getStateForAction) => (action, state) => {
+const navigateOnce = (getStateForAction) => (action, state) => {
     const {type, routeName} = action;
     return (
         state &&
@@ -105,6 +105,6 @@ const mapStateToProps = state => ({
     ) ? null : getStateForAction(action, state);
 };
 
-RouteApp.router.getStateForAction = navigateOnce(RouteApp.router.getStateForAction);*/
+RouteApp.router.getStateForAction = navigateOnce(RouteApp.router.getStateForAction);
 
 export default connect(mapStateToProps)(AppWithNavigationState);

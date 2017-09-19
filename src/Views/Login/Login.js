@@ -9,7 +9,7 @@ import SnackBar from 'react-native-snackbar-dialog';
 //Redux
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as Actions from '../../actions';
+import * as loginActions from '../../actions/login';
 
 import MainView from '../../components/MainView.js';
 import MyText from '../../components/MyText.js';
@@ -22,13 +22,14 @@ const fbIcon = (<FontAwesomeIcon name="facebook-official" size={30} color="#fff"
 const windowsize = Dimensions.get('window');
 
 function mapStateToProps(state){
+  console.log("Estado: ", state);
   return({
     user: state.user
   });
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators(Actions, dispatch);
+  return bindActionCreators(loginActions, dispatch);
 }
 
 class Login extends Component{
@@ -97,7 +98,7 @@ class Login extends Component{
 
     //Función para verificar email y contraseña con firebase
     async handleLogin() {
-        try {
+        /*try {
             await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password);
         } catch (error) {
             console.log(error);
@@ -123,7 +124,7 @@ class Login extends Component{
                 duration: 5000
             })
 
-        }
+        }*/
 
     }
 
@@ -140,11 +141,11 @@ class Login extends Component{
         this.setState({password: text});
     }
 
-    //Prueba REDUX
-    prueba(){
-      this.props.login({
-        userName: 'testuser',
-        password: 'abc123'
+    //Login Redux
+    login(){
+      this.props.submitLogin({
+        userName: this.state.email,
+        password: this.state.password
       });
     }
 
@@ -185,7 +186,7 @@ class Login extends Component{
                                 <Text style={styles.forgetTxt} onPress={() => navigate('OlvideContrasena')}>Olvide mi contraseña</Text>
                             </View>
                             <View style={styles.loginBtn}>
-                                <MyButton onPress={() => this.prueba.bind(this)}>Iniciar</MyButton>
+                                <MyButton onPress={() => this.login.bind(this)}>Iniciar</MyButton>
                             </View>
                         </View>
                         <View style={styles.registerContainer}>

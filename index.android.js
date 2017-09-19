@@ -10,11 +10,12 @@ import { AppRegistry } from 'react-native';
 import { createStore } from 'redux';
 import { Provider, connect } from 'react-redux';
 import { addNavigationHelpers } from 'react-navigation';
+import  AppReducer  from './src/reducers';
+import Services from './src/services'
 //Firebase
 import * as firebase from 'firebase';
 //Navigation
 import { RouteApp } from './src/config/routes.js';
-import  AppReducer  from './src/reducers'
 //End imports--------------------------------------------
 
 
@@ -28,7 +29,7 @@ const config = {
 };
 
 const firebaseApp = firebase.initializeApp(config);
-const store = createStore(AppReducer);
+const store = createStore(AppReducer, Services);
 
 const App = ({dispatch, nav}) => (
   <RouteApp
