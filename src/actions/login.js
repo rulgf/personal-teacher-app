@@ -1,7 +1,8 @@
 import {
   LOGIN_SEND,
   LOGIN_SUCCESS,
-  LOGIN_ERROR
+  LOGIN_ERROR,
+  LOGOUT
 } from '../constants/actionTypes'
 
 export function submitLogin(userCredentials){
@@ -11,6 +12,12 @@ export function submitLogin(userCredentials){
       userName: userCredentials.userName,
       password: userCredentials.password
     }
+  }
+}
+
+export function logout(){
+  return {
+    type: LOGOUT
   }
 }
 

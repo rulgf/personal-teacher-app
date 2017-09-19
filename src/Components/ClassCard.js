@@ -33,7 +33,7 @@ export default class ClassCard extends Component{
         var storage = firebase.storage().ref();
         storage.child('img/clases/'+ this.state.image).getDownloadURL().then((url) => {
             this.setState({url: url});
-            console.log(url);
+            //console.log(url);
         })
     }
 

@@ -16,6 +16,10 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import ExtraDimensions from 'react-native-extra-dimensions-android';
 import Button from 'apsl-react-native-button';
 import SnackBar from 'react-native-snackbar-dialog';
+//Redux
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as loginActions from '../../actions/login';
 
 import MainView from '../../components/MainView.js';
 import MyText from '../../components/MyText.js';
@@ -26,7 +30,18 @@ import Auth from '../../Models/Auth.js';
 
 import * as firebase from 'firebase';
 
-export default class Profile extends Component {
+function mapStateToProps(state){
+  console.log("Estado: ", state);
+  return({
+    user: state.user
+  });
+}
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators(loginActions, dispatch);
+}
+
+class Profile extends Component {
 
     static navigationOptions = {
         title: 'Perfil'
@@ -64,6 +79,10 @@ export default class Profile extends Component {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    logout(){
+      this.props.logout();
     }
 
     render(){
@@ -116,7 +135,7 @@ export default class Profile extends Component {
                         </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={this.handleLogout.bind(this)}>
+                    <TouchableOpacity onPress={this.logout.bind(this)}>
                         <View style={styles.optionView}>
                             <MyText size={18}>Cerrar Sesión</MyText>
                             <FontAwesomeIcon name="circle-thin" size={26} color='#fff'/>
@@ -159,3 +178,5 @@ const styles = StyleSheet.create({
         marginTop: 15
     }
 });
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)

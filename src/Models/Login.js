@@ -1,6 +1,10 @@
 import * as firebase from 'firebase';
 
 class Login {
+
+  /*
+   * Iniciar Sesión
+  */
   static async handleLogin(email, password) {
     try {
         await firebase.auth().signInWithEmailAndPassword(email, password);
@@ -24,6 +28,18 @@ class Login {
         return ({error: errorTxt});
     }
   }
+
+  /*
+   * Cerrar Sesión
+  */
+  static async handleLogout(){
+      try {
+          await firebase.auth().signOut();
+      } catch (error) {
+           console.log("Logout Error:", error)
+      }
+  }
+
 }
 
 module.exports = Login;

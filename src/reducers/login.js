@@ -1,6 +1,7 @@
 import {
   LOGIN_SUCCESS,
-  LOGIN_ERROR
+  LOGIN_ERROR,
+  LOGOUT,
 }from '../constants/actionTypes';
 
 let cloneObject = function(obj) {
@@ -27,6 +28,11 @@ export default function (state, action){
       newState = cloneObject(state);
       newState.user.loggedIn = false;
       newState.user.logError = action.logError;
+      return newState;
+    case LOGOUT:
+      console.log("Logout...");
+      newState = cloneObject(state);
+      newState.user.loggedIn = false;
       return newState;
     default:
       return state || newState;

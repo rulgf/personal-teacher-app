@@ -167,9 +167,8 @@ class Login extends Component{
                                 labelStyle={{ color: 'white',backgroundColor: 'transparent',fontFamily: 'Champagne & Limousines', }}
                                 inputStyle={{ color: 'white' }}
                                 borderColor={'#fff'}
-                                keyboard={'email-address'}
+                                keyboardType={'email-address'}
                                 onChangeText={this.handleEmail.bind(this)}
-                                keyboard={'email-address'}
                                 autoCapitalize={'none'}
                             />
 
@@ -178,9 +177,8 @@ class Login extends Component{
                                 labelStyle={{ color: 'white',backgroundColor: 'transparent',fontFamily: 'Champagne & Limousines', }}
                                 inputStyle={{ color: 'white' }}
                                 borderColor={'#fff'}
-                                password={true}
+                                secureTextEntry={true}
                                 onChangeText={this.handlePassword.bind(this)}
-                                password={true}
                             />
                             <View style={styles.forget}>
                                 <Text style={styles.forgetTxt} onPress={() => navigate('OlvideContrasena')}>Olvide mi contraseña</Text>

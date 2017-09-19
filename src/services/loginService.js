@@ -1,7 +1,6 @@
 import {
   LOGIN_SEND,
-  LOGIN_SUCCESS,
-  LOGIN_ERROR
+  LOGOUT
 } from '../constants/actionTypes'
 
 import  Login  from '../Models/Login';
@@ -21,6 +20,8 @@ const loginService = (store) => (next) => (action) => {
           return next(loginActions.loginSuccess(action.payload.userName));
         }
       });
+    case LOGOUT:
+      Login.handleLogout();
     default:
       break;
   }
