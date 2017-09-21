@@ -11,7 +11,7 @@ export default class MyText extends Component{
     }
 
     componentWillReceiveProps(nextProps){
-        this.setState({fontsize: nextProps.size});
+        this.setState({fontsize: nextProps.size || 18});
     }
 
     render(){

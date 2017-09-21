@@ -7,7 +7,7 @@ import {addNavigationHelpers, StackNavigator, TabNavigator, NavigationActions } 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 //Import screens:
-import Login from '../Views/Login/Login.js';
+import Login from '../containers/login';
 import Terminos from '../Views/TerminosyCondiciones.js';
 import Politicas from '../Views/Politicas.js';
 import OlvideContrasena from '../Views/Login/OlvideContrasena.js';

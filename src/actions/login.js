@@ -2,8 +2,9 @@ import {
   LOGIN_SEND,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
-  LOGOUT
-} from '../constants/actionTypes'
+  LOGOUT,
+  LOGIN_CHANGE,
+} from '../constants/actionTypes';
 
 export function submitLogin(userCredentials){
   return {
@@ -33,4 +34,10 @@ export function loginError(error){
      type: LOGIN_ERROR,
      logError: error
    }
+ }
+
+ export function verifyAuth() {
+     return {
+       type: LOGIN_CHANGE,
+     }
  }

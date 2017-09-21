@@ -31,7 +31,6 @@ import Auth from '../../Models/Auth.js';
 import * as firebase from 'firebase';
 
 function mapStateToProps(state){
-  console.log("Estado: ", state);
   return({
     user: state.user
   });

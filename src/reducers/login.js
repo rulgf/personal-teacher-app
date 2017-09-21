@@ -11,30 +11,35 @@ let cloneObject = function(obj) {
 let newState =
 {
   user:{
-    loggedIn: false
+    loggedIn: false,
+    activeUser: '',
+    logError: ''
   }
 };
 
 export default function (state, action){
   switch (action.type) {
     case LOGIN_SUCCESS:
-      console.log("Login Success...");
       newState = cloneObject(state);
       newState.user.loggedIn = true;
       newState.user.activeUser = action.activeUser;
+      newState.user.logError = '';
       return newState;
     case LOGIN_ERROR:
-      console.log("Login Failed..");
       newState = cloneObject(state);
       newState.user.loggedIn = false;
+      newState.user.activeUser = '';
       newState.user.logError = action.logError;
       return newState;
     case LOGOUT:
-      console.log("Logout...");
       newState = cloneObject(state);
       newState.user.loggedIn = false;
+      newState.user.activeUser = '';
+      newState.user.logError = '';
       return newState;
     default:
-      return state || newState;
+      newState = cloneObject(state || newState);
+      newState.user.logError = '';
+      return newState;
   }
 }
