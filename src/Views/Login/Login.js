@@ -38,9 +38,13 @@ const renderInput = ({ input: { onChange, ...restInput }, ...otherProps }) =>
 
 export default class Login extends React.Component<DefaultProps, Props, State> {
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.handleCreate = this.handleCreate.bind(this);
+    this.login = this.login.bind(this);
+  }
 
   componentWillReceiveProps(nextProps: any) {
+    console.log(nextProps);
     const logError = nextProps.user.logError;
     if (logError !== '') {
       this.showSnack(logError);
@@ -105,7 +109,7 @@ export default class Login extends React.Component<DefaultProps, Props, State> {
             </View>
             <View style={loginStyles.registerContainer}>
               <Text style={loginStyles.txtPad}>¿Aún no estás registrado?</Text>
-              <MyButton onPress={() => this.handleCreate.bind(this)}>Crear Cuenta</MyButton>
+              <MyButton onPress={() => this.handleCreate}>Crear Cuenta</MyButton>
             </View>
             <View style={loginStyles.footContainer}>
               <Text style={loginStyles.footTxtLink} onPress={() => navigate('Terminos')}>TÉRMINOS Y CONDICIONES</Text>

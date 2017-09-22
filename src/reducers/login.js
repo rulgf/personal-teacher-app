@@ -1,23 +1,19 @@
-import {
-  LOGIN_SUCCESS,
-  LOGIN_ERROR,
-  LOGOUT,
-}from '../constants/actionTypes';
+import { LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT } from '../constants/actionTypes';
 
-let cloneObject = function(obj) {
-  return JSON.parse(JSON.stringify(obj))
-}
-
-let newState =
-{
-  user:{
-    loggedIn: false,
-    activeUser: '',
-    logError: ''
-  }
+const cloneObject = function (obj) {
+  return JSON.parse(JSON.stringify(obj));
 };
 
-export default function (state, action){
+let newState = {
+  user: {
+    loggedIn: false,
+    activeUser: '',
+    logError: '',
+  },
+};
+
+export default function (state, action) {
+  console.log("Dispatching Action: ", action.type);
   switch (action.type) {
     case LOGIN_SUCCESS:
       newState = cloneObject(state);

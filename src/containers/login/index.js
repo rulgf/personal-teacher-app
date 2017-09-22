@@ -7,6 +7,7 @@ import * as loginActions from '../../actions/login';
 
 
 function mapStateToProps(state) {
+  console.log("State: ", state);
   return ({
     user: state.login.user,
   });
