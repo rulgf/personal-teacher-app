@@ -6,38 +6,38 @@ import {
   LOGIN_CHANGE,
 } from '../constants/actionTypes';
 
-export function submitLogin(userCredentials){
+export function submitLogin(userCredentials) {
   return {
     type: LOGIN_SEND,
-    payload:{
+    payload: {
       userName: userCredentials.userName,
-      password: userCredentials.password
-    }
-  }
+      password: userCredentials.password,
+    },
+  };
 }
 
-export function logout(){
+export function logout() {
   return {
-    type: LOGOUT
-  }
+    type: LOGOUT,
+  };
 }
 
-export function loginSuccess(userName){
+export function loginSuccess(userName) {
   return {
     type: LOGIN_SUCCESS,
-    activeUser: userName
-  }
+    activeUser: userName,
+  };
 }
 
-export function loginError(error){
-   return {
-     type: LOGIN_ERROR,
-     logError: error
-   }
- }
+export function loginError(error) {
+  return {
+    type: LOGIN_ERROR,
+    logError: error,
+  };
+}
 
- export function verifyAuth() {
-     return {
-       type: LOGIN_CHANGE,
-     }
- }
+export function verifyAuth() {
+  return {
+    type: LOGIN_CHANGE,
+  };
+}

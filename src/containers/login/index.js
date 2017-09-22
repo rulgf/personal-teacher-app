@@ -1,22 +1,23 @@
-import React, {Component} from 'react';
+// @flow
 import { bindActionCreators } from 'redux';
+import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import Login from '../../Views/Login/Login'
+import Login from '../../Views/Login/Login';
 import * as loginActions from '../../actions/login';
-import {reduxForm} from 'redux-form';
 
-function mapStateToProps(state){
-  return({
-    user: state.login.user
+
+function mapStateToProps(state) {
+  return ({
+    user: state.login.user,
   });
 }
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch) {
   return bindActionCreators(loginActions, dispatch);
 }
 
 const loginComponent = reduxForm({
-  form: 'login'
-})(Login)
+  form: 'login',
+})(Login);
 
-export default connect(mapStateToProps, mapDispatchToProps)(loginComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(loginComponent);
